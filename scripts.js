@@ -2,6 +2,7 @@ const form = document.querySelector('form')
 const expense = document.getElementById('expense')
 const category = document.getElementById('category')
 const amount = document.getElementById('amount')
+const expenseList = document.getElementById('expense-list')
 
 amount.oninput = () => {
     let value = amount.value.replace(/\D/g, "")
@@ -29,5 +30,22 @@ form.onsubmit = (event) => {
         crated_at: new Date(),
     }
 
-    console.log(newExpense)
+    addExpense(newExpense)
+}
+
+function addExpense(newExpense) {
+    try {
+        const expenseItem = document.createElement('li')
+        expenseItem.classList.add('expense')
+
+        const expenseIcon = document.createElement('img')
+        expenseIcon.setAttribute('src', `./img/${newExpense.category_id}.svg`)
+        expenseIcon.setAttribute('alt', newExpense.category_name)
+
+        expenseItem.append(expenseIcon)
+        expenseList.append(expenseItem)
+    } catch (error) {
+        console.log(error)
+        alert('Não foi possivel atualizar a lista.')
+    }
 }
