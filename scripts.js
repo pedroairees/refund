@@ -97,3 +97,11 @@ function updateTotals() {
         alert('Não foi possível atualizar o número de despesas')
     }
 }
+
+expenseList.addEventListener('click', (event) => {
+    if(event.target.classList.contains('remove-icon')){
+        const item = event.target.closest('.expense')
+        item.remove()
+    }
+    updateTotals()
+})
