@@ -62,6 +62,8 @@ function addExpense(newExpense) {
 
         expenseItem.append(expenseIcon, expenseInfo, expenseAmount, removeBtn)
         expenseList.prepend(expenseItem)
+
+        formClear()
         updateTotals()
     } catch (error) {
         console.log(error)
@@ -105,3 +107,10 @@ expenseList.addEventListener('click', (event) => {
     }
     updateTotals()
 })
+
+function formClear() {
+    expense.value = ''
+    category.value = ''
+    amount.value = ''
+    expense.focus()
+}
